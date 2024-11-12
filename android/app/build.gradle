@@ -27,7 +27,7 @@ apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 apply plugin: 'com.google.gms.google-services'
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 34
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -38,19 +38,16 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.example.phone_auth_project"
-        minSdkVersion 16
-        targetSdkVersion 31
+        applicationId "com.example.phone_auth_project"  // Өзгөчөлөштүрүлгөн тиркеменин IDсин жазыш керек
+        minSdkVersion 23  // Firebase Auth үчүн минималдуу SDK версиясы 23 болуп жаңыртылды
+        targetSdkVersion 34  // Тиркемеңиз үчүн таргет SDK версиясын 34кө көтөрүңүз
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
 
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.debug  // Жарнамалык версия үчүн кол коюуну конфигурациялоону кошуу
         }
     }
 }
@@ -61,7 +58,7 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation platform('com.google.firebase:firebase-bom:30.3.0')
-    implementation 'com.google.firebase:firebase-auth-ktx'
-    implementation "androidx.browser:browser:1.4.0"
+    implementation platform('com.google.firebase:firebase-bom:30.3.0')  // Firebase SDK BOM (Bill of Materials) версиясын колдонуу
+    implementation 'com.google.firebase:firebase-auth-ktx'  // Firebase Auth
+    implementation "androidx.browser:browser:1.4.0"  // Колдонулуп жаткан браузер библиотеки
 }

@@ -1,12 +1,13 @@
 buildscript {
-    ext.kotlin_version = '1.6.10'
+    ext.kotlin_version = '1.8.0' // Kotlin версиясын жаңыртуу
     repositories {
         google()
-        jcenter()
+        mavenCentral() // jcenter азыр колдонулбайт, mavenCentral колдонуу сунушталат
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.1.0'
+        // AGP версиясын 7.0.0 же андан жогору кылуу
+        classpath 'com.android.tools.build:gradle:7.0.0' // AGP версиясын жаңыртуу
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'com.google.gms:google-services:4.3.13'
     }
@@ -15,18 +16,20 @@ buildscript {
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral() // jcenter аягына чыкты, ошондуктан mavenCentral колдонуу керек
     }
 }
 
 rootProject.buildDir = '../build'
+
 subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"
 }
+
 subprojects {
     project.evaluationDependsOn(':app')
 }
 
-task clean(type: Delete) {
+tasks.register("clean", Delete) {
     delete rootProject.buildDir
 }

@@ -34,7 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   hintText: 'Phone Number',
                   prefix: Padding(
                     padding: EdgeInsets.all(4),
-                    child: Text('+1'),
+                    child: Text('+996'),
                   ),
                 ),
                 maxLength: 10,
@@ -44,20 +44,21 @@ class _LoginScreenState extends State<LoginScreen> {
             )
           ]),
           Container(
-            margin: EdgeInsets.all(10),
-            width: double.infinity,
-            child: FlatButton(
-              color: Colors.blue,
-              onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => OTPScreen(_controller.text)));
-              },
-              child: Text(
-                'Next',
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-          )
+              margin: EdgeInsets.all(10),
+              width: double.infinity,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue, // Бутондун түсүн койдук
+                ),
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => OTPScreen(_controller.text),
+                    ),
+                  );
+                },
+                child: Text('Жөнөтүү'), // Кнопканын текстин киргизүү
+              ))
         ],
       ),
     );
